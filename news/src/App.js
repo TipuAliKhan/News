@@ -1,12 +1,5 @@
 import './App.css';
 
-<<<<<<< Updated upstream
-function App() {
-  return (
-    <div className="App">
-      Hello
-    </div>
-=======
 import Header from './Components/Header/Header';
 import Card from './Components/Card/Card';
 
@@ -73,7 +66,6 @@ function App() {
         </div>
       </div>
     </main>
->>>>>>> Stashed changes
   );
 }
 
