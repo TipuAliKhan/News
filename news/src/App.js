@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import Header from './Components/Header/Header';
+import Card from './Components/Card/Card';
 
 function App() {
   const API_KEY = "dc59315f456e4fed8b3a72721155dd10";
@@ -18,6 +19,7 @@ function App() {
   const filterNews = (event) => {
     const domain = "https://newsapi.org";
     let path = '';
+    setIsLoading(true);
 
     if (event.target.dataset.type === "country") {
       path = `/v2/top-headlines?country=${event.target.dataset.value}`;
@@ -43,10 +45,26 @@ function App() {
     setCategory(selectedCategory);
   }
 
+  useEffect(() => {
+    fetch(URL)
+    .then(response => response.json())
+    .then(result => {
+      setNews(result.articles);
+      setIsLoading(false);
+    })
+    .catch(error => console.log('error', error));
+  }, [URL]);
+
   return (
-    <div className="container">
-      <Header categories={category} handleClick={filterNews} />
-    </div>
+    <main>
+      <div className="container">
+        <Header categories={category} handleClick={filterNews} />
+        <div className="card-container">
+          {news.map((item, index) => <Card key={index} detail={item} />)}
+          {isLoading?<div className="loading">Fetching News...</div>:null}
+        </div>
+      </div>
+    </main>
   );
 }
 
