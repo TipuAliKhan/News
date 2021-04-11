@@ -1,14 +1,13 @@
+import React, { useState, useEffect } from 'react';
+
 import './App.css';
 
 import Header from './Components/Header/Header';
 import Card from './Components/Card/Card';
 
 function App() {
-
   const API_KEY = "dc59315f456e4fed8b3a72721155dd10";
-  const [URL, setURL] = useState(`https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=${API_KEY}`)
-  const [news, setNews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [URL, setURL] = useState(`https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=${API_KEY}`);
   const [category, setCategory] = useState([
     { "value": "bitcoin", "type": "keyword", "isActive": true },
     { "value": "us", "type": "country", "isActive": false },
