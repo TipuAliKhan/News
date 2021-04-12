@@ -22,8 +22,9 @@ function App() {
   const filterNews = (event) => {
     const domain = "https://newsapi.org";
     let path = '';
-    setNews([], () => setIsLoading(true));
-    
+    setNews([]);
+    setIsLoading(true);
+
     if (event.target.dataset.type === "country") {
       path = `/v2/top-headlines?country=${event.target.dataset.value}`;
     }
@@ -52,7 +53,8 @@ function App() {
     fetch(URL)
     .then(response => response.json())
     .then(result => {
-      setNews(result.articles, () => setIsLoading(false));
+      setNews(result.articles);
+      setIsLoading(false);
     })
     .catch(error => console.log('error', error));
   }, [URL]);
