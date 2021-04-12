@@ -25,3 +25,7 @@ header ul li{
     margin: 0 10px 10px 0;
     text-align: center;
 }
+header ul li.active{
+    color: #fff;
+    background-color: #d5c2b8;
+}
